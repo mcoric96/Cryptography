@@ -8,7 +8,7 @@ Algorithms:
 4. phi function
 5. matrix inverse modulo n
 
-##Classic chipers
+## Classic chipers
 Cesar chiper
 Hill chiper
 Affine chiper
