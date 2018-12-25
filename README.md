@@ -7,3 +7,8 @@ Algorithms:
 3. multiplicative inverse modulo n
 4. phi function
 5. matrix inverse modulo n
+
+##Classic chipers
+Cesar chiper
+Hill chiper
+Affine chiper
