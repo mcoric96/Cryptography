@@ -1,6 +1,6 @@
 # Cryptography
 ## Number theory module
-Module contains functions used for number theory problems in cryprography.
+Module contains functions used for number theory problems in cryprography. <br>
 Algorithms: 
 1. Prime numbers test (Miller-Rabin)
 2. gcd
