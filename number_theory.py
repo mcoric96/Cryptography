@@ -150,7 +150,7 @@ def matrixInverse_modn(A,m):
         for j in range(n):#columns
             #calculate cofactor of A(i,j)
             M = minor(A,i,j)
-            #we use A[j][i] so we don't need to use transpose function
+            # use A[j][i] so we don't need to use transpose function
             adj[j][i] = int((round(det(M)) % m)) #int , because function det returns floating point value(for example 4.0 instead of 4)
             if (i+1+j+1)%2 == 1:
                 adj[j][i] = (-1*adj[j][i]) % 26
