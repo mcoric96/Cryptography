@@ -10,7 +10,7 @@ def miller_rabin(number,k):
         r += 1
         s //= 2
     for _ in range(k):
-        a = randrange(2, number) #some random number from [2,n-1]
+        a = randrange(2, number) # random number from [2,n-1]
         x = pow(a, s, number) # (a^s) mod number
         if x == 1 or x == number - 1:
             continue
@@ -44,7 +44,7 @@ def isPrime(number): #return True if prime,else return False
             if number % i == 0:
                 return False
         return True
-    #for numbers >= 5000 we use Miller-Rabin test for prime numbers
+    #for numbers >= 5000 use Miller-Rabin test for prime numbers
     return miller_rabin(number,10)
 
 def gcd(a,b): #Euclid algorithm,return greatest common divisor od 2 positive integers
@@ -72,7 +72,7 @@ alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q',
 #this function return inverse for multiplication mod n (if exists)
 #brute force is good for our small mod n problem because those are small integers,otherwise we need to calculate inverse with algorithms from numbertheory
 # modular inverse using extended Euclid algorithm :returns modulo inverse of a with respect to m using extended Euclid algorithm
-# algorithm assumption: a and m are coprimes -> gcd(a, m) = 1
+# ASSUMPTION: a and m are coprimes -> gcd(a, m) = 1
 def modInverse(a, m) :
     if gcd(a,m) != 1 or (m == 1): #if inverse does not exist
         return
@@ -83,14 +83,14 @@ def modInverse(a, m) :
         #q is quotient 
         q = a // m 
         t = m 
-        #m is remainder now process the same as Euclid's algorithm
+        #m is remainder , now process the same as Euclid's algorithm
         m = a % m 
         a = t 
         t = y 
         #update x and y 
         y = x - q * y 
         x = t 
-    #x positive 
+    #to make x positive 
     if (x < 0) : 
         x = x + m0 
     return x
@@ -106,7 +106,7 @@ def phi(n):
                 n = int(n / p)
             result -= int(result / p)
         p += 1
-    #if n has a prime factor greater than sqrt(n) there can be at-most  one such prime factor
+    #if n has a prime factor greater than sqrt(n) there can be at most one such prime factor
     if (n > 1): 
         result -= int(result / n)
     return result
