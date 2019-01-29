@@ -14,7 +14,7 @@ def miller_rabin(number,k):
         r += 1
         s //= 2
     for _ in range(k):
-        a = randrange(2, number) #some random number from [2,n-1]
+        a = randrange(2, number) # random number from [2,n-1]
         x = pow(a, s, number) # (a^s) mod number
         if x == 1 or x == number - 1:
             continue
@@ -48,7 +48,7 @@ def isPrime(number): #return True if prime,else return False
             if number % i == 0:
                 return False
         return True
-    #for numbers >= 5000 we use Miller-Rabin test for prime numbers
+    #for numbers >= 5000 use Miller-Rabin test for prime numbers
     return miller_rabin(number,10)
 
 def gcd(a,b): #Euclid algorithm,return greatest common divisor od 2 positive integers
@@ -72,7 +72,7 @@ def coprimeList(number): #for SMALL positive integer number , returns list of re
 
 # this function return inverse for multiplication mod n (if exists)
 # modular inverse using extended Euclid algorithm :returns modulo inverse of a with respect to m using extended Euclid algorithm
-# algorithm assumption: a and m are coprimes -> gcd(a, m) = 1
+# ASSUMPTION: a and m are coprimes -> gcd(a, m) = 1
 def modInverse(a, m) :
     if gcd(a,m) != 1 or (m == 1): #if inverse does not exist
         return
@@ -83,13 +83,22 @@ def modInverse(a, m) :
         # q is quotient 
         q = a // m 
         t = m 
+<<<<<<< HEAD
         # m is remainder now do the same as Euclid's algorithm
+=======
+        #m is remainder , now process the same as Euclid's algorithm
+>>>>>>> 115f8724bfe080b13966dfb75f255b4cbc410e29
         m = a % m 
         a = t 
         t = y 
         # update x and y 
         y = x - q * y 
+<<<<<<< HEAD
         x = t  
+=======
+        x = t 
+    #to make x positive 
+>>>>>>> 115f8724bfe080b13966dfb75f255b4cbc410e29
     if (x < 0) : 
         x = x + m0 
     return x
@@ -107,7 +116,7 @@ def phi(n):
                 n = int(n / p)
             result -= int(result / p)
         p += 1
-    #if n has a prime factor greater than sqrt(n) there can be at-most  one such prime factor
+    #if n has a prime factor greater than sqrt(n) there can be at most one such prime factor
     if (n > 1): 
         result -= int(result / n)
     return result
@@ -151,7 +160,7 @@ def matrixInverse_modn(A,m):
         for j in range(n):#columns
             #calculate cofactor of A(i,j)
             M = minor(A,i,j)
-            #we use A[j][i] so we don't need to use transpose function
+            # use A[j][i] so we don't need to use transpose function
             adj[j][i] = int((round(det(M)) % m)) #int , because function det returns floating point value(for example 4.0 instead of 4)
             if (i+1+j+1)%2 == 1:
                 adj[j][i] = (-1*adj[j][i]) % 26
