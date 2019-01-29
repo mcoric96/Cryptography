@@ -7,6 +7,7 @@ Algorithms:
 3. multiplicative inverse modulo n
 4. phi function
 5. matrix inverse modulo n
+6. primitive root mod n
 
 ## Classic chipers
 1. Cesar chiper
@@ -15,3 +16,5 @@ Algorithms:
 
 ## DES function f
 Implementation of f function from DES using S-boxes.
+
+## El Gamal chiper
