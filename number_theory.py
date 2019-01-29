@@ -1,9 +1,13 @@
-# we use this number_theory module for other cryptography modules
+# use this number_theory module for other cryptography modules
 from math import sqrt
 from random import randrange
 from numpy import array,zeros
 from numpy.linalg import det
-#we use this algorithm only for odd numbers
+
+#variable - list that contains all english letters
+alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+
+# use this algorithm only for odd numbers
 def miller_rabin(number,k):
     r, s = 0, number - 1
     while s % 2 == 0:
@@ -14,7 +18,7 @@ def miller_rabin(number,k):
         x = pow(a, s, number) # (a^s) mod number
         if x == 1 or x == number - 1:
             continue
-        nextLoop = False #flag
+        nextLoop = False
         for _ in range(r - 1):
             x = pow(x, 2, number) #x = (x^2) mod number
             if x == 1 :
@@ -57,7 +61,7 @@ def mod(number,n): # return x ,such as x is from {0,1,...,n-1} and n divide (num
         return
     return number % n
 
-def relprime_list(number): #for SMALL positive integer number , returns list of relative primes from {1,2,...,n-1}
+def coprimeList(number): #for SMALL positive integer number , returns list of relative primes from {1,2,...,n-1}
     if type(number) != int or number < 1:
         return
     l = []
@@ -66,11 +70,7 @@ def relprime_list(number): #for SMALL positive integer number , returns list of 
             l.append(i)
     return l
 
-#variable - list that contains all english letters
-alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-
-#this function return inverse for multiplication mod n (if exists)
-#brute force is good for our small mod n problem because those are small integers,otherwise we need to calculate inverse with algorithms from numbertheory
+# this function return inverse for multiplication mod n (if exists)
 # modular inverse using extended Euclid algorithm :returns modulo inverse of a with respect to m using extended Euclid algorithm
 # algorithm assumption: a and m are coprimes -> gcd(a, m) = 1
 def modInverse(a, m) :
@@ -80,23 +80,24 @@ def modInverse(a, m) :
     y = 0
     x = 1
     while (a > 1) : 
-        #q is quotient 
+        # q is quotient 
         q = a // m 
         t = m 
-        #m is remainder now process the same as Euclid's algorithm
+        # m is remainder now do the same as Euclid's algorithm
         m = a % m 
         a = t 
         t = y 
-        #update x and y 
+        # update x and y 
         y = x - q * y 
-        x = t 
-    #x positive 
+        x = t  
     if (x < 0) : 
         x = x + m0 
     return x
 
 # Euler's function 
 def phi(n):
+    if isPrime(n):
+        return n - 1
     result = n # initialize result as n 
     p = 2 #consider all prime factors of n and subtract their multiples from result 
     while(p * p <= n):  
@@ -155,3 +156,60 @@ def matrixInverse_modn(A,m):
             if (i+1+j+1)%2 == 1:
                 adj[j][i] = (-1*adj[j][i]) % 26
     return ((modInverse(d,m)*adj) % m)
+
+#function return a list of all prime factors of a given number
+def primeFactors(n):
+    if type(n) != int:
+        print("Wrong argument!")
+        return
+    if n <= 1:
+        print("Wrong argument!")
+        return
+    if isPrime(n): # 0 prime factors
+        return None
+    factors = []
+    while n % 2 == 0: #if n is even
+        n = n // 2
+        if 2 not in factors:
+            factors.append(2)
+    #now n is odd
+    for i in range(3,int(sqrt(n))+2,2):
+        while n % i == 0: 
+            if i not in factors:
+                factors.append(i) 
+            n = n // i
+    if n > 2:
+        if n not in factors:
+            factors.append(n)
+    return factors
+
+#computing primitive roots mod n ,THEOREM: there are primitive roots mod n if and only if n = 2,4,p^k or 2 * p^k for odd prime p
+#if allRoots = True algorithm returns all primitive roots , else it returns the smallest primitive root (if primitive root exists)
+def primitiveRoot(n , allRoots = False):
+    if type(n) != int or n <= 1:
+        return
+    if isPrime(n):
+        s = n-1 #phi function
+        factors = primeFactors(s)
+        powers = [(s // f) for f in factors] #powers for testing
+        roots = [] # list of primitive roots
+        for a in range(2,n):
+            primitiveRoot = True
+            for p in powers:
+                if pow(a,p,n) == 1:
+                    primitiveRoot = False
+                    break
+            if primitiveRoot:
+                if not allRoots: #if we want only 1 primitive root
+                    return a
+                roots.append(a)
+                break #we found smallest primitive root
+        #now generate all other primitive roots , if a is primitive root  ,then a^m mod n is primitive root if and only if gcd(m,p-1)=1
+        for m in coprimeList(s):
+            roots.append(pow(a,m,n))
+        return set(roots)
+##    else: #if n is composite
+##        factors = primeFactors(n)
+##        #because of the theorem mentioned above its clear that if there is at least 3 prime factors , primitive root doesn't exist
+##        if len(factors) > 2:
+##            return None
