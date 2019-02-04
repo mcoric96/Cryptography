@@ -5,7 +5,7 @@ Algorithms:
 1. Prime numbers test (Miller-Rabin)
 2. greatest common divisor - gcd
 3. multiplicative inverse modulo n
-4. phi function
+4. Euler's function
 5. matrix inverse modulo n
 6. primitive root mod n
 
