@@ -83,22 +83,14 @@ def modInverse(a, m) :
         # q is quotient 
         q = a // m 
         t = m 
-<<<<<<< HEAD
-        # m is remainder now do the same as Euclid's algorithm
-=======
         #m is remainder , now process the same as Euclid's algorithm
->>>>>>> 115f8724bfe080b13966dfb75f255b4cbc410e29
         m = a % m 
         a = t 
         t = y 
         # update x and y 
         y = x - q * y 
-<<<<<<< HEAD
-        x = t  
-=======
         x = t 
     #to make x positive 
->>>>>>> 115f8724bfe080b13966dfb75f255b4cbc410e29
     if (x < 0) : 
         x = x + m0 
     return x
