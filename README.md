@@ -18,3 +18,4 @@ Algorithms:
 Implementation of f function from DES using S-boxes.
 
 ## El Gamal chiper
+Example of asymetric cryptosystem based on public-key cryptography. It is based on difficulty to solve discrete-logarithm problem in multiplicaition group of remainders mod p (p is prime number).This cryptosystem can be defined over any cyclic group G. The security depends on properties of chosen group G.
