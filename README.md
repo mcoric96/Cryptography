@@ -1,7 +1,7 @@
 # Cryptography
 ## Number theory module
 Module contains functions used for number theory problems in cryprography. <br>
-Algorithms: 
+**Algorithms:**
 1. Prime numbers test (Miller-Rabin)
 2. greatest common divisor - gcd
 3. multiplicative inverse mod n
@@ -23,4 +23,4 @@ There are 4 stages of calculating this function output.<br>
 4.f(A,J) = P(C1...C8) where P is final permutation.
 
 ## El Gamal chiper
-Example of asymetric cryptosystem based on public-key cryptography. It is based on difficulty to solve discrete-logarithm problem in multiplicaition group of remainders mod p (p is prime number).This cryptosystem can be defined over any cyclic group G. The security depends on properties of chosen group G.
+Example of asymetric cryptosystem based on public-key cryptography. It is based on difficulty to solve **discrete-logarithm problem** in multiplicaition group of remainders mod p (p is prime number).This cryptosystem can be defined over any cyclic group G. The security depends on properties of chosen group G.
