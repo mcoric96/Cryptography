@@ -1,7 +1,7 @@
 # Cryptography
 
 <p align="center">
-  <img src="https://static.commonlounge.com/fp/600w/JEyGt9Jlnh98Mt9MZHFyL64Ba1520493907_kc">
+  <img width="450" height="270" src="https://static.commonlounge.com/fp/600w/JEyGt9Jlnh98Mt9MZHFyL64Ba1520493907_kc">
 </p>
 
 ## Number theory module
