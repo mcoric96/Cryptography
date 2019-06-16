@@ -1,4 +1,9 @@
 # Cryptography
+
+<p align="center">
+  <img src="https://static.commonlounge.com/fp/600w/JEyGt9Jlnh98Mt9MZHFyL64Ba1520493907_kc">
+</p>
+
 ## Number theory module
 Module contains functions used for number theory problems in cryprography. <br>
 **Algorithms:**
